@@ -20,7 +20,7 @@ A couple of points to note:
 2. The distance threshold used to decide if two features are matched should be relatively high to be more tolerant of a match. While some "mismatches" are considered matches, RANSAC can help remove outliers. This is specific to finding matched points by feature detection, and other regression methods for homography may be necessary in different cases.
 3. To address the issue of pixels having negative coordinates after transformation, an offset matrix is multiplied by the homography, shifting the transformed image to the "positive side." In cases where pixels have high coordinates, the solution is to enlarge the image's size.
    
-A demo is at: https://youtu.be/n2y3zm_ARYs
+A demo is at: https://youtu.be/n2y3zm_ARYs and the final stitched image is "stitched_image.png"
 
 *Note that both the YouTube demo link and this repository are private 
 

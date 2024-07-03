@@ -15,7 +15,7 @@ The following result is when the center is the reference (right->center, left->(
 The following result is when the right is the reference (center->right, left->center-right)): we can see the distortion when the left is stitched
 ![right_is_reference](https://github.com/quangsonle/panorama_stitching/assets/48610518/d8772231-f77f-46d2-ad29-624a0926f70e)
 
-Please see the demonstration video at https://youtu.be/BFVoZWYr1Ao
+Please see the demonstration video at [https://youtu.be/BFVoZWYr1Ao](https://www.youtube.com/watch?v=BFVoZWYr1Ao)
 
 To run the program, follow these steps:
 

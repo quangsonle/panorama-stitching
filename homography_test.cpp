@@ -15,7 +15,7 @@ using namespace cv;
 //using namespace cv::xfeatures2d;
 using std::cout;
 using std::endl;
-/*read coordinates of the cursor, it is for debug purposes*/
+//read coordinates of the cursor, it is for debug purposes
 void onMouse(int action, int x, int y, int flag, void* param) {//for debug the transformation
 	if (action == cv::EVENT_LBUTTONDOWN) {
 		cout << "x:" << x << "y:" << y << endl;
@@ -26,7 +26,8 @@ class find_homography // OOP - just as the instruction prefers
 public:
 	//If the matrix is transformed resulting in negative coordinate elements, 
         //those elements would be omitted. 
-        //This function is designed to compensate for this situation by moving those points with an offset to the positive side.
+        //This function is designed to compensate for this situation 
+        //by moving those points with an offset to the positive side.
         // it aims to find the minimums after transformation
 	void find_offset(Mat hm, int& Offset_x, int& Offset_y, int rows, int cols)
 	{
@@ -168,7 +169,7 @@ public:
 		drawMatches(img1, keypoints1, img2, keypoints2, good_matches, img_matches, Scalar::all(-1),
 			Scalar::all(-1), std::vector<char>(), DrawMatchesFlags::NOT_DRAW_SINGLE_POINTS);
 		//-- Show detected matches
-	//	imshow("Good Matches", img_matches);
+	
 		Mat  h = findHomography(points1, points2, RANSAC); /// RANSAC-based regression to find homography
 
 
@@ -191,7 +192,7 @@ public:
 
 		int newsize1x, newsize1y,newsize2x,newsize2y;
 		find_new_size(h_c, newsize1x, newsize1y, img1.rows, img1.cols);
-	//	printf("size1: %d,%d, size 1 orignial:%d,%d \n", newsize1x, newsize1y, img1.rows, img1.cols);
+		//printf("size1: %d,%d, size 1 orignial:%d,%d \n", newsize1x, newsize1y, img1.rows, img1.cols);
 		find_new_size(offset_mat, newsize2x, newsize2y, img2.rows, img2.cols);
 		//printf("size2: %d,%d, size 2 orignial:%d,%d \n", newsize2x, newsize2y, img2.rows, img2.cols);
 		int size_cols = newsize1x > newsize2x ? newsize1x : newsize2x;
@@ -206,8 +207,6 @@ public:
 		
 	
 		cv::Mat half(result, crop_box);
-	//	imshow("raw", result);
-	//	imshow("half", half);
 		
 		img2t(crop_box).copyTo(half);
 	//	imshow("img2t", img2t);

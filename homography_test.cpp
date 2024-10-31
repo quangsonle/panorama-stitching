@@ -16,7 +16,7 @@ using namespace cv;
 using std::cout;
 using std::endl;
 /*read coordinates of the cursor, it is for debug purposes*/
-void onMouse(int action, int x, int y, int flag, void* param) {//for debug the tranformation
+void onMouse(int action, int x, int y, int flag, void* param) {//for debug the transformation
 	if (action == cv::EVENT_LBUTTONDOWN) {
 		cout << "x:" << x << "y:" << y << endl;
 	}
@@ -24,10 +24,10 @@ void onMouse(int action, int x, int y, int flag, void* param) {//for debug the t
 class find_homography // OOP - just as the instruction prefers
 {
 public:
-	//In the event that the matrix is transformed resulting in negative coordinate elements, 
+	//If the matrix is transformed resulting in negative coordinate elements, 
         //those elements would be omitted. 
         //This function is designed to compensate for this situation by moving those points with an offset to the positive side.
-	    // it aims to find the minimums after transformation
+        // it aims to find the minimums after transformation
 	void find_offset(Mat hm, int& Offset_x, int& Offset_y, int rows, int cols)
 	{
 	
@@ -56,7 +56,7 @@ public:
 			}
 		}
 
-		/// now find y offset
+		/// Now find y offset
 		if (hm.at<double>(1, 0) >= 0.0 && hm.at<double>(1, 1) >= 0.0 && hm.at<double>(1, 2) >= 0.0)
 			offset_y = 0.0;
 		else
@@ -82,8 +82,8 @@ public:
 		Offset_x = (int)offset_x;
 		Offset_y = (int)offset_y;
 	}
-	
-		//This function is designed to find the maximum values after transformation-the new size. It is opposite to the find offset above- which finds the minimum after transformation
+	//This function is designed to find the maximum values after the transformation new size. 
+        //It is opposite to the offset above- which finds the minimum after transformation
 	void find_new_size(Mat hm, int& New_sizex, int& New_sizey, int rows, int cols)
 	{
 		{
@@ -103,7 +103,6 @@ public:
 			srcp.push_back(Point2f(0, rows));
 			srcp.push_back(Point2f(cols, 0));
 			perspectiveTransform(srcp, dstp, hm);
-		//	cout << "x max find:" << dstp << endl;
 			New_sizex = (int)(std::max({ dstp[0].x,dstp[1].x,dstp[2].x,dstp[3].x,dstp[4].x }));
 
 		}
@@ -213,10 +212,6 @@ public:
 		img2t(crop_box).copyTo(half);
 	//	imshow("img2t", img2t);
 		
-		//	imshow("final", result);
-		//	setMouseCallback("raw", onMouse); //for debug the tranformation
-		//	setMouseCallback("img2t", onMouse);//for debug the tranformation
-	
 
 		return result;
 	}

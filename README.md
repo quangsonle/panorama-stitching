@@ -1,4 +1,4 @@
-# panorama_stitching
+# panorama_stitching in C++
 
 Finding a panorama, or stitching images from different perspectives, is not a new problem in image processing. The solution involves a combination of (1) matching point discovery, which can be done by feature extractors like SIFT or ORB, or manually, (2) homography matrix estimation using OpenCV's regression, and (3) stitching the transformed image onto the reference within the reference's coordinate system.
 
